@@ -1,11 +1,36 @@
+import csv
 import random
 #importing random, which will help us later on to randomize the order of fname and lname from the list.
+
+
+
+def csv_to_text():
+    """This function simply converts csv to text file."""
+    file_name = input("Name the csv file?:")
+    with open("from_csv.txt", "+w") as output:
+        with open(file_name+".csv", "r") as inputx:
+            [output.write(" ".join(row)+'\n') for row in csv.reader(inputx)]
+
+conversion_required = input("Do you have csv file to be converted to text? (y/n):")
+in_loop = True
+while in_loop:
+    if conversion_required is "y":
+        csv_to_text()
+        break
+    elif conversion_required is "n":
+        in_loop = False
+        break
+    else:
+        print("Invalid input")
+        in_loop = True
+        break
+
 
 def in_list():
     """This function is used to extract the list of first names
     form list1.txt file and append the strings into fname[] list."""
     fname = []
-    with open("list1.txt", "r") as list1:
+    with open("firstname.txt", "r") as list1:
         fileRead = list1.readlines()
         for line in fileRead:
             fname.append(line.strip("\n"))
@@ -15,7 +40,7 @@ def in_list_2():
     """This function is used to extract the list of last names
     form list2.txt file and append the strings into lname[] list. """
     lname = []
-    with open("list2.txt", "r") as list2:
+    with open("lastname.txt", "r") as list2:
         fileread = list2.readlines()
         for line in fileread:
             lname.append(line.strip("\n"))
