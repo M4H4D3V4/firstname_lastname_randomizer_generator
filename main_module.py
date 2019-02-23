@@ -21,16 +21,20 @@ def in_list_2():
             lname.append(line.strip("\n"))
         return lname
 
-
+#generating n amount of numbers where n is the number of first names.
 num_random = list(range(len(in_list())))
+#randomizing the numbers order.
 random.shuffle(num_random)
 
+#generating n amount of numbers where n is the number of last names.
 num_random2 = list(range(len(in_list_2())))
+#randomizing the numbers order.
 random.shuffle(num_random2)
 
 print(num_random) #prints the random number for testing
-print(num_random2)
+print(num_random2)#for testing purpose
 
+#an empty list where new names will be placed.
 new_name_list = []
 def two_name_joiner():
     """This function joins first name and last name which are ordered randomly."""
@@ -38,9 +42,11 @@ def two_name_joiner():
         for y in range(1):
             new_name_list.append(in_list()[num_random[x]]+ " "+in_list_2()[num_random2[x]])
 
+#calling the function to let the new name be stored on empty list made before (New_name_list)
 two_name_joiner()
 
-print(new_name_list)
+print(new_name_list) #testing either the names are builed perfectly or not.
+
 def write_new_file():
     """This function generates the new name list."""
     with open("generated_name.txt","a") as write:
@@ -48,5 +54,5 @@ def write_new_file():
             write.write(new_name_list[x])
             write.write("\n")
 write_new_file()
-
+#at last all the names generated on (new_name_list) are appended to the text file.
 
